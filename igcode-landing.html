@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="IGCode — Agência de desenvolvimento de software. Landing pages de alta conversão, sites profissionais e sistemas personalizados para negócios que querem crescer.">
+<title>IGCode — Tecnologia que gera resultados</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="icon" type="image/png" sizes="512x512" href="assets/logo.png">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #08080D;
+    --surface: #0F0F17;
+    --card: #13131C;
+    --border: rgba(255,255,255,0.07);
+    --cyan: #00D4FF;
+    --blue: #0066FF;
+    --blue-glow: rgba(0,102,255,0.25);
+    --cyan-glow: rgba(0,212,255,0.15);
+    --white: #FFFFFF;
+    --muted: #6B6B80;
+    --text: #C8C8D8;
+    --display: 'Space Grotesk', sans-serif;
+    --body: 'Inter', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--text);
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAVBAR ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 0 5%;
+    height: 72px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(8,8,13,0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    transition: background 0.3s;
+  }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    height: 72px;
+}
+
+.nav-logo img {
+    height: 42px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+}
+  .nav-logo span { color: var(--cyan); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+.nav-logo img {
+    width: 70px;
+    height: auto;
+    display: block;
+}
+
+  .nav-links a:hover { color: var(--white); }
+  .nav-cta {
+    background: var(--blue);
+    color: var(--white);
+    border: none;
+    padding: 0.55rem 1.3rem;
+    border-radius: 8px;
+    font-family: var(--body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.2s;
+    text-decoration: none;
+  }
+  .nav-cta:hover { opacity: 0.85; transform: translateY(-1px); }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    padding: 140px 5% 100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg-glow {
+    position: absolute;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,102,255,0.12) 0%, transparent 70%);
+    top: -100px; right: -100px;
+    pointer-events: none;
+  }
+  .hero-bg-glow2 {
+    position: absolute;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,212,255,0.07) 0%, transparent 70%);
+    bottom: 50px; left: 5%;
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(0,212,255,0.08);
+    border: 1px solid rgba(0,212,255,0.2);
+    border-radius: 100px;
+    padding: 0.35rem 1rem;
+    font-size: 0.8rem;
+    color: var(--cyan);
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--cyan);
+    border-radius: 50%;
+  }
+  .hero-title {
+    font-family: var(--display);
+    font-size: clamp(2.4rem, 4vw, 3.6rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.12;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+  .hero-title .accent { color: var(--cyan); position: relative; display: inline-block; }
+  .hero-title .accent::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--cyan), transparent);
+  }
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--muted);
+    line-height: 1.7;
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+  }
+  .hero-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--blue), #0052CC);
+    color: var(--white);
+    border: none;
+    padding: 0.85rem 2rem;
+    border-radius: 10px;
+    font-family: var(--body);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 0 30px rgba(0,102,255,0.3);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 40px rgba(0,102,255,0.45); }
+  .btn-secondary {
+    color: var(--white);
+    border: 1px solid var(--border);
+    padding: 0.85rem 1.8rem;
+    border-radius: 10px;
+    font-family: var(--body);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: transparent;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .btn-secondary:hover { border-color: var(--cyan); background: rgba(0,212,255,0.05); }
+
+  /* Hero visual */
+  .hero-visual { position: relative; }
+  .browser-mockup {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.6), 0 0 60px rgba(0,102,255,0.1);
+  }
+  .browser-bar {
+    background: #1A1A26;
+    padding: 0.8rem 1rem;
+    display: flex; align-items: center; gap: 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dot-r { background: #FF5F57; }
+  .dot-y { background: #FEBC2E; }
+  .dot-g { background: #28C840; }
+  .browser-url {
+    flex: 1;
+    background: rgba(255,255,255,0.05);
+    border-radius: 6px;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-left: 0.5rem;
+  }
+  .browser-content {
+    padding: 1.5rem;
+    min-height: 300px;
+    background: linear-gradient(160deg, #0D0D18 0%, #080810 100%);
+  }
+  .mock-hero-bar {
+    background: linear-gradient(90deg, var(--blue), var(--cyan));
+    height: 4px; border-radius: 4px; margin-bottom: 1.2rem;
+    width: 60%;
+  }
+  .mock-lines { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem; }
+  .mock-line {
+    height: 8px; border-radius: 4px;
+    background: rgba(255,255,255,0.07);
+  }
+  .mock-line.w80 { width: 80%; }
+  .mock-line.w60 { width: 60%; }
+  .mock-line.w45 { width: 45%; }
+  .mock-cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.6rem; }
+  .mock-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.8rem;
+  }
+  .mock-card-dot {
+    width: 20px; height: 20px; border-radius: 6px;
+    margin-bottom: 0.5rem;
+  }
+  .mock-card-dot.blue { background: var(--blue); }
+  .mock-card-dot.cyan { background: var(--cyan); }
+  .mock-card-dot.purple { background: #7C3AED; }
+  .mock-card-line { height: 6px; border-radius: 3px; background: rgba(255,255,255,0.08); margin-top: 0.4rem; }
+  .mock-card-line.short { width: 70%; }
+
+  /* Floating badges */
+  .float-badge {
+    position: absolute;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 0.7rem 1rem;
+    display: flex; align-items: center; gap: 0.6rem;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    white-space: nowrap;
+  }
+  .fb-icon { font-size: 1.2rem; }
+  .fb-label { font-size: 0.7rem; color: var(--muted); font-weight: 500; }
+  .fb-value { font-size: 0.95rem; color: var(--white); font-weight: 700; font-family: var(--display); }
+  .badge-perf { top: -20px; right: -30px; }
+  .badge-conv { bottom: 40px; left: -40px; }
+  .badge-speed { bottom: -20px; right: 40px; }
+
+  /* SVG sketches */
+  .sketch-arrow {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0.35;
+  }
+
+  /* ── STATS ── */
+  #stats {
+    padding: 80px 5%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .stat-card:hover { border-color: rgba(0,212,255,0.2); transform: translateY(-4px); }
+  .stat-card:hover::before { opacity: 1; }
+  .stat-num {
+    font-family: var(--display);
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+  .stat-num span { color: var(--cyan); }
+  .stat-label { font-size: 0.85rem; color: var(--muted); font-weight: 500; }
+  .stat-glow {
+    position: absolute;
+    bottom: -30px; left: 50%;
+    transform: translateX(-50%);
+    width: 80px; height: 60px;
+    background: var(--cyan);
+    filter: blur(40px);
+    opacity: 0.08;
+    border-radius: 50%;
+  }
+
+  /* ── ABOUT ── */
+  #about {
+    padding: 100px 5%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+  .section-eyebrow {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--cyan);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .section-eyebrow::before {
+    content: '';
+    width: 24px; height: 1px;
+    background: var(--cyan);
+  }
+
+  .project-thumb-inner {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.project-thumb-inner video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+  .section-title {
+    font-family: var(--display);
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    margin-bottom: 1.5rem;
+  }
+  .section-body { color: var(--muted); line-height: 1.8; margin-bottom: 1.5rem; }
+  .about-visual {
+    position: relative;
+  }
+  .about-img-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .about-code-block {
+    font-family: 'Courier New', monospace;
+    font-size: 0.78rem;
+    line-height: 1.7;
+    color: #6B7FFF;
+  }
+  .code-comment { color: #3D3D5C; }
+  .code-keyword { color: var(--cyan); }
+  .code-string { color: #A8FF78; }
+  .code-fn { color: #FF79C6; }
+  .about-tag {
+    position: absolute;
+    background: linear-gradient(135deg, var(--blue), #0044AA);
+    color: var(--white);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.4rem 0.9rem;
+    border-radius: 8px;
+  }
+  .tag-top { top: -12px; right: 30px; }
+  .tag-bottom { bottom: -12px; left: 30px; background: linear-gradient(135deg, #00A884, #009972); }
+
+  /* ── SERVICES ── */
+  #services {
+    padding: 100px 5%;
+  }
+  .section-header {
+    text-align: center;
+    max-width: 560px;
+    margin: 0 auto 4rem;
+  }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  .service-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s, transform 0.3s;
+    cursor: default;
+  }
+  .service-card:hover { border-color: rgba(0,102,255,0.3); transform: translateY(-4px); }
+  .service-card::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; right: -60px;
+    width: 150px; height: 150px;
+    border-radius: 50%;
+    background: var(--blue);
+    opacity: 0.04;
+    transition: opacity 0.3s;
+  }
+  .service-card:hover::after { opacity: 0.09; }
+  .service-icon {
+    width: 52px; height: 52px;
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+  }
+  .icon-blue { background: rgba(0,102,255,0.12); border: 1px solid rgba(0,102,255,0.2); }
+  .icon-cyan { background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.2); }
+  .icon-purple { background: rgba(124,58,237,0.1); border: 1px solid rgba(124,58,237,0.2); }
+  .icon-green { background: rgba(0,200,80,0.1); border: 1px solid rgba(0,200,80,0.2); }
+  .service-title {
+    font-family: var(--display);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.7rem;
+  }
+  .service-desc { color: var(--muted); font-size: 0.9rem; line-height: 1.7; }
+  .service-tag {
+    display: inline-block;
+    margin-top: 1.2rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--cyan);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border-bottom: 1px solid rgba(0,212,255,0.3);
+    padding-bottom: 1px;
+  }
+
+  /* ── PROCESS ── */
+  #process {
+    padding: 100px 5%;
+    background: var(--surface);
+    position: relative;
+    overflow: hidden;
+  }
+  .process-bg {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: radial-gradient(ellipse at 80% 50%, rgba(0,102,255,0.05) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-top: 4rem;
+    position: relative;
+  }
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    top: 28px; left: calc(12.5% + 1rem); right: calc(12.5% + 1rem);
+    height: 1px;
+    background: linear-gradient(90deg, var(--blue), var(--cyan), var(--blue));
+    opacity: 0.3;
+  }
+  .process-step { text-align: center; position: relative; }
+  .step-num {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: var(--card);
+    border: 2px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-family: var(--display);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--cyan);
+    transition: border-color 0.3s, box-shadow 0.3s;
+    position: relative; z-index: 1;
+  }
+  .process-step:hover .step-num {
+    border-color: var(--cyan);
+    box-shadow: 0 0 20px var(--cyan-glow);
+  }
+  .step-title {
+    font-family: var(--display);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+  }
+  .step-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+
+  /* ── PORTFOLIO ── */
+  #projects {
+    padding: 100px 5%;
+  }
+  /* ── PORTFÓLIO ── */
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    grid-template-rows: repeat(2, minmax(260px, auto));
+    gap: 20px;
+}
+
+
+/* Projeto principal */
+.project-card.featured {
+    grid-row: span 2;
+}
+
+
+/* Cards laterais */
+.project-card:not(.featured) {
+    min-height: 260px;
+}
+
+
+.project-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: .3s ease;
+    position: relative;
+}
+
+
+/* Área do vídeo */
+.project-thumb {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+
+.project-thumb-inner {
+    position: absolute;
+    inset: 0;
+}
+
+
+.project-thumb-inner video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
+/* Informações */
+.project-info {
+    padding: 1.5rem;
+}
+
+@media(max-width:900px){
+
+    .projects-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows:auto;
+    }
+
+
+    .project-card.featured {
+        grid-row:auto;
+    }
+
+
+    .project-card,
+    .project-card:not(.featured){
+        min-height:auto;
+    }
+
+
+    .project-thumb {
+        height:auto;
+        aspect-ratio:16/9;
+    }
+
+
+    .project-thumb-inner {
+        position:absolute;
+    }
+
+    .cta .btn-primary {
+        margin:auto;
+        justify-content: center;
+        width: fit-content;
+    }
+
+}
+
+@media(max-width:500px){
+
+    .projects-grid {
+        gap:16px;
+    }
+
+    .cta .btn-primary {
+        margin: auto;
+        justify-content: center;
+        width: fit-content;
+    }
+
+
+    .project-thumb {
+        aspect-ratio:4/3;
+    }
+
+
+    .project-info {
+        padding:1rem;
+    }
+
+
+    .project-name {
+        font-size:1rem;
+    }
+
+
+    .project-desc {
+        font-size:.8rem;
+    }
+
+}
+
+
+  .thumb-health { background: linear-gradient(135deg, #0A1628, #0D2B4E); }
+  .thumb-ecom { background: linear-gradient(135deg, #120A28, #221040); }
+  .thumb-saas { background: linear-gradient(135deg, #0A2010, #0D3018); }
+  .thumb-rest { background: linear-gradient(135deg, #280A0A, #401010); }
+  .project-info { padding: 1.5rem; }
+  .project-type {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--cyan);
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+  }
+  .project-name {
+    font-family: var(--display);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.4rem;
+  }
+  .project-desc { font-size: 0.83rem; color: var(--muted); line-height: 1.5; }
+
+  /* ── DIFFERENTIALS ── */
+  #diferenciais {
+    padding: 100px 5%;
+    background: var(--surface);
+  }
+  .diff-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 3.5rem;
+  }
+  .diff-card {
+    padding: 2rem;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    transition: border-color 0.3s;
+  }
+  .diff-card:hover { border-color: rgba(0,102,255,0.25); }
+  .diff-icon { font-size: 1.8rem; margin-bottom: 1.2rem; }
+  .diff-title {
+    font-family: var(--display);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+  }
+  .diff-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+
+  /* ── CTA ── */
+  #cta {
+    padding: 120px 5%;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-glow {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px; height: 400px;
+    background: radial-gradient(ellipse, rgba(0,102,255,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cta-title {
+    font-family: var(--display);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    max-width: 640px;
+    margin: 0 auto 1.2rem;
+  }
+  .cta-sub {
+    color: var(--muted);
+    max-width: 480px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.7;
+  }
+  .cta-sketch {
+    position: absolute;
+    opacity: 0.18;
+    pointer-events: none;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 60px 5% 40px;
+  }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2rem;
+  }
+  .footer-brand .nav-logo { font-size: 1.3rem; display: inline-block; margin-bottom: 1rem; }
+  .footer-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.7; max-width: 260px; }
+  .footer-col-title {
+    font-family: var(--display);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .footer-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.2s;
+  }
+
+  
+  .footer-links a:hover { color: var(--cyan); }
+  .footer-bottom {
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 0.8rem; color: var(--muted);
+  }
+  .social-links { display: flex; gap: 0.8rem; }
+  .social-link {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .social-link:hover { border-color: var(--cyan); background: rgba(0,212,255,0.05); }
+
+  /* Animations */
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  @keyframes float2 {
+    0%, 100% { transform: translateY(0) rotate(-2deg); }
+    50% { transform: translateY(-8px) rotate(2deg); }
+  }
+  .float-badge { animation: float 5s ease-in-out infinite; }
+  .badge-conv { animation-delay: -1.5s; }
+  .badge-speed { animation-delay: -3s; }
+
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+  .live-dot {
+    width: 8px; height: 8px;
+    background: #22C55E;
+    border-radius: 50%;
+    display: inline-block;
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+
+  /* Reveal on scroll */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+.footer-contact-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    #hero, #about { grid-template-columns: 1fr; gap: 3rem; }
+    #hero { padding-top: 120px; }
+    .hero-visual { order: -1; }
+    .badge-perf, .badge-conv, .badge-speed { display: none; }
+    #stats { grid-template-columns: repeat(2, 1fr); }
+    .services-grid { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: repeat(2, 1fr); }
+    .process-steps::before { display: none; }
+    .diff-grid { grid-template-columns: repeat(2, 1fr); }
+    .projects-grid { grid-template-columns: 1fr; }
+    .project-card.featured { grid-row: span 1; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    nav .nav-links { display: none; }
+    .botao-centralizado {
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+  }
+  @media (max-width: 500px) {
+    #stats { grid-template-columns: repeat(2, 1fr); }
+    .diff-grid { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+    .hero-actions { flex-direction: column; align-items: flex-start; }
+    .footer-contact-btn {
+        margin: 0 auto;
+        display: flex;
+        width: fit-content;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <a class="nav-logo" href="#hero">
+    <img src="assets/logo.png" alt="IGCode">
+</a>
+  <ul class="nav-links">
+    <li><a href="#hero">Início</a></li>
+    <li><a href="#services">Serviços</a></li>
+    <li><a href="#process">Processo</a></li>
+    <li><a href="#projects">Projetos</a></li>
+    <li><a href="#cta">Contato</a></li>
+  </ul>
+  <a class="nav-cta" href="https://wa.me/5511999999999" target="_blank">Começar projeto</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-glow"></div>
+  <div class="hero-bg-glow2"></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span class="live-dot"></span>
+      Agência de Tecnologia
+    </div>
+    <h1 class="hero-title">
+      Sites rápidos.<br>
+      Estratégias <span class="accent">inteligentes</span>.<br>
+      Mais clientes.
+    </h1>
+    <p class="hero-sub">Criamos landing pages e experiências digitais para negócios que querem crescer no ambiente online — com código limpo, design estratégico e resultados reais.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="https://wa.me/5514991402378" target="_blank">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Solicitar orçamento
+      </a>
+      <a class="btn-secondary" href="#projects">
+        Ver projetos
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <!-- Sketch arrow -->
+    <svg class="sketch-arrow" style="top:-30px; left:30px; width:60px; height:50px;" viewBox="0 0 60 50" fill="none">
+      <path d="M10 40 Q30 10 50 20" stroke="#00D4FF" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="4 3"/>
+      <path d="M46 16 L54 22 L46 26" stroke="#00D4FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <!-- Sketch circle around mockup -->
+    <svg class="sketch-arrow" style="top:-10px; right:-20px; width:80px; height:80px; opacity:0.2;" viewBox="0 0 80 80" fill="none">
+      <ellipse cx="40" cy="40" rx="32" ry="30" stroke="#0066FF" stroke-width="1.5" stroke-dasharray="6 4" transform="rotate(-15 40 40)"/>
+    </svg>
+
+    <div class="browser-mockup">
+      <div class="browser-bar">
+        <div class="dot dot-r"></div>
+        <div class="dot dot-y"></div>
+        <div class="dot dot-g"></div>
+        <div class="browser-url">igcode.com.br</div>
+      </div>
+      <div class="browser-content">
+        <div class="mock-hero-bar"></div>
+        <div class="mock-lines">
+          <div class="mock-line w80"></div>
+          <div class="mock-line w60"></div>
+          <div class="mock-line w45"></div>
+        </div>
+        <div class="mock-cards">
+          <div class="mock-card">
+            <div class="mock-card-dot blue"></div>
+            <div class="mock-card-line"></div>
+            <div class="mock-card-line short"></div>
+          </div>
+          <div class="mock-card">
+            <div class="mock-card-dot cyan"></div>
+            <div class="mock-card-line"></div>
+            <div class="mock-card-line short"></div>
+          </div>
+          <div class="mock-card">
+            <div class="mock-card-dot purple"></div>
+            <div class="mock-card-line"></div>
+            <div class="mock-card-line short"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-content reveal">
+    <div class="section-eyebrow">Sobre a IGCode</div>
+    <h2 class="section-title">Criamos experiências digitais para negócios que querem crescer.</h2>
+    <p class="section-body"> Ajudamos pequenos negócios e empreendedores a conquistarem uma presença online profissional através de landing pages e lojas virtuais modernas, rápidas e estratégicas.</p>
+    <p class="section-body"> Cada projeto é pensado para apresentar sua marca, facilitar o contato com clientes e transformar visitantes em novas oportunidades de venda.</p>
+    <a class="btn-primary" href="#cta" style="display:inline-flex; margin-top:0.5rem;">
+      Conhecer a agência
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+  <div class="about-visual reveal" style="transition-delay:0.15s">
+    <!-- Hand-drawn underline accent -->
+    <svg style="position:absolute; top:-24px; left:0; width:200px; height:30px; opacity:0.3;" viewBox="0 0 200 30" fill="none">
+      <path d="M10 20 Q60 5 110 18 Q150 28 190 12" stroke="#00D4FF" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    <div class="about-img-card">
+  <div class="about-tag tag-top">★ Landing Page Estratégica</div>
+
+  <pre class="about-code-block"><span class="code-comment">// IGCode — página que converte</span>
+
+<span class="code-keyword">const</span> estrategia = {
+  <span class="code-string">design</span>: <span class="code-string">"UI Premium"</span>,
+  <span class="code-string">velocidade</span>: <span class="code-string">"Otimizada"</span>,
+  <span class="code-string">experiencia</span>: <span class="code-string">"Foco no cliente"</span>,
+  <span class="code-string">objetivo</span>: <span class="code-string">"Mais conversões"</span>,
+};
+
+<span class="code-fn">function</span> <span class="code-keyword">criarPresenca</span>() {
+  analisarNegocio();
+  criarDesign();
+  gerarResultados();
+}</pre>
+
+  <div class="about-tag tag-bottom">✓ Design que vende</div>
+</div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="process-bg"></div>
+
+  <div style="position:relative;">
+    <div class="section-header reveal">
+      <div class="section-eyebrow" style="justify-content:center">Como trabalhamos</div>
+      <h2 class="section-title">Da ideia ao lançamento em 4 etapas</h2>
+    </div>
+
+    <div class="process-steps">
+
+      <div class="process-step reveal">
+        <div class="step-num">01</div>
+        <div class="step-title">Entendimento</div>
+        <p class="step-desc">
+          Conhecemos seu negócio, seus objetivos e seu público para criar uma página alinhada com sua marca e seus clientes.
+        </p>
+      </div>
+
+      <div class="process-step reveal" style="transition-delay:0.1s">
+        <div class="step-num">02</div>
+        <div class="step-title">Estratégia & Design</div>
+        <p class="step-desc">
+          Criamos uma estrutura visual estratégica, com foco em apresentar seu negócio, gerar confiança e aumentar conversões.
+        </p>
+      </div>
+
+      <div class="process-step reveal" style="transition-delay:0.2s">
+        <div class="step-num">03</div>
+        <div class="step-title">Desenvolvimento</div>
+        <p class="step-desc">
+          Transformamos o design em uma landing page ou loja online rápida, responsiva e preparada para seus clientes.
+        </p>
+      </div>
+
+      <div class="process-step reveal" style="transition-delay:0.3s">
+        <div class="step-num">04</div>
+        <div class="step-title">Publicação</div>
+        <p class="step-desc">
+          Realizamos os ajustes finais, colocamos seu projeto no ar e entregamos tudo pronto para você começar a receber clientes.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+
+  <div class="section-header reveal">
+    <div class="section-eyebrow" style="justify-content:center">Portfólio</div>
+    <h2 class="section-title">Projetos que geram resultados</h2>
+  </div>
+
+
+  <div class="projects-grid">
+
+    <!-- Projeto 1 -->
+    <div class="project-card featured reveal">
+
+      <div class="project-thumb">
+        <div class="project-thumb-inner">
+          <video autoplay muted loop playsinline preload="metadata">
+            <source src="videos/lanchonete.mp4" type="video/mp4">
+            Seu navegador não suporta vídeos.
+          </video>
+        </div>
+      </div>
+
+      <div class="project-info">
+        <div class="project-type">Landing Page · Restaurante</div>
+        <div class="project-name">Lanchonete — Pedidos Online</div>
+
+        <p class="project-desc">
+          Landing page criada para apresentar produtos, facilitar pedidos e direcionar clientes para o WhatsApp.
+        </p>
+      </div>
+
+    </div>
+
+
+    <!-- Projeto 2 -->
+    <div class="project-card reveal" style="transition-delay:0.1s">
+
+      <div class="project-thumb">
+        <div class="project-thumb-inner">
+          <video autoplay muted loop playsinline preload="metadata">
+            <source src="videos/ruaz.mp4" type="video/mp4">
+            Seu navegador não suporta vídeos.
+          </video>
+        </div>
+      </div>
+
+      <div class="project-info">
+        <div class="project-type">Loja Virtual · Streetwear</div>
+        <div class="project-name">RUAZ — Loja Online</div>
+
+        <p class="project-desc">
+          E-commerce moderno para venda de roupas com catálogo de produtos e integração com WhatsApp.
+        </p>
+      </div>
+
+    </div>
+
+
+    <!-- Projeto 3 -->
+    <div class="project-card reveal" style="transition-delay:0.2s">
+
+      <div class="project-thumb">
+        <div class="project-thumb-inner">
+          <video autoplay muted loop playsinline preload="metadata">
+            <source src="videos/gcsports.mp4" type="video/mp4">
+            Seu navegador não suporta vídeos.
+          </video>
+        </div>
+      </div>
+
+      <div class="project-info">
+        <div class="project-type">E-commerce · Esportes</div>
+        <div class="project-name">GCSports — Loja Esportiva</div>
+
+        <p class="project-desc">
+          Loja online desenvolvida para apresentar produtos esportivos e facilitar compras digitais.
+        </p>
+      </div>
+
+    </div>
+
+
+  </div>
+
+</section>
+<!-- DIFFERENTIALS -->
+<!-- DIFFERENTIALS -->
+<section id="diferenciais">
+  <div class="section-header reveal">
+    <div class="section-eyebrow" style="justify-content:center">Por que a IGCode?</div>
+    <h2 class="section-title">Design estratégico para negócios que querem crescer</h2>
+  </div>
+
+  <div class="diff-grid">
+
+    <div class="diff-card reveal">
+      <div class="diff-icon">
+        <i class="bi bi-bullseye"></i>
+      </div>
+      <div class="diff-title">Foco em conversão</div>
+      <p class="diff-desc">
+        Criamos landing pages e lojas online pensadas para apresentar seu negócio, gerar confiança e transformar visitantes em clientes.
+      </p>
+    </div>
+
+
+    <div class="diff-card reveal" style="transition-delay:0.1s">
+      <div class="diff-icon">
+        <i class="bi bi-palette"></i>
+      </div>
+      <div class="diff-title">Design profissional</div>
+      <p class="diff-desc">
+        Cada detalhe visual é planejado para transmitir credibilidade, destacar sua marca e proporcionar uma experiência moderna aos seus clientes.
+      </p>
+    </div>
+
+
+    <div class="diff-card reveal" style="transition-delay:0.2s">
+      <div class="diff-icon">
+        <i class="bi bi-lightning-charge"></i>
+      </div>
+      <div class="diff-title">Rápido e responsivo</div>
+      <p class="diff-desc">
+        Páginas rápidas, adaptadas para celular e desenvolvidas para oferecer uma navegação simples e eficiente em qualquer dispositivo.
+      </p>
+    </div>
+
+
+    <div class="diff-card reveal" style="transition-delay:0.3s">
+      <div class="diff-icon">
+        <i class="bi bi-people"></i>
+      </div>
+      <div class="diff-title">Atendimento próximo</div>
+      <p class="diff-desc">
+        Trabalhamos lado a lado com cada cliente para entender o negócio e criar uma solução alinhada aos seus objetivos.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section id="cta">
+  <div class="cta-glow"></div>
+  <!-- Sketch decorations -->
+  <svg class="cta-sketch" style="top:20%; left:5%; width:120px; height:80px;" viewBox="0 0 120 80" fill="none">
+    <path d="M10 60 Q50 10 110 30" stroke="#0066FF" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="5 4"/>
+    <path d="M100 25 L112 32 L102 40" stroke="#0066FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <svg class="cta-sketch" style="bottom:20%; right:5%; width:100px; height:100px;" viewBox="0 0 100 100" fill="none">
+    <circle cx="50" cy="50" r="40" stroke="#00D4FF" stroke-width="1.5" stroke-dasharray="7 5" transform="rotate(-20 50 50)"/>
+  </svg>
+  <svg class="cta-sketch" style="top:30%; right:15%; width:60px; height:40px; opacity:0.25;" viewBox="0 0 60 40" fill="none">
+    <path d="M5 35 L55 5" stroke="#00D4FF" stroke-width="1.5" stroke-linecap="round"/>
+    <path d="M50 2 L58 8 L50 14" stroke="#00D4FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+
+  <div style="position:relative; z-index:1;">
+    <div class="section-eyebrow reveal" style="justify-content:center">Vamos começar?</div>
+    <h2 class="cta-title reveal">Seu negócio merece uma presença digital profissional.</h2>
+    <p class="cta-sub reveal">Vamos criar uma solução personalizada para transformar visitantes em clientes — com estratégia, design e código de alto padrão.</p>
+    <div class="hero-actions reveal" style="justify-content:center; flex-wrap:wrap;">
+      <a class="btn-primary footer-contact-btn" href="https://wa.me/5514991402378" target="_blank" style="font-size:1.05rem; padding:1rem 2.4rem;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M11.99 2C6.476 2 2 6.478 2 11.994c0 1.942.523 3.759 1.432 5.33L2.046 22l4.734-1.364A9.922 9.922 0 0 0 11.99 22c5.514 0 9.99-4.478 9.99-9.994S17.504 2 11.99 2zm0 18.121a8.242 8.242 0 0 1-4.196-1.15l-.3-.179-3.12.899.864-3.12-.196-.311A8.226 8.226 0 0 1 3.758 12c0-4.555 3.685-8.242 8.232-8.242 4.547 0 8.231 3.687 8.231 8.242 0 4.556-3.684 8.121-8.231 8.121z"/></svg>
+        Entre em contato
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+
+    <div class="footer-brand">
+      <a class="nav-logo" href="#">
+        <img src="assets/logo.png" alt="IGCode">
+      </a>
+
+      <p class="footer-desc">
+        Criamos landing pages, sites profissionais e lojas online estratégicas para pequenos negócios conquistarem mais clientes através da internet.
+      </p>
+    </div>
+
+
+    <div>
+      <div class="footer-col-title">Serviços</div>
+
+      <ul class="footer-links">
+        <li><a href="#services">Landing Pages</a></li>
+        <li><a href="#services">Sites Profissionais</a></li>
+        <li><a href="#services">Lojas Online</a></li>
+        <li><a href="#services">Otimização Digital</a></li>
+      </ul>
+    </div>
+
+
+    <div>
+      <div class="footer-col-title">Empresa</div>
+
+      <ul class="footer-links">
+        <li><a href="#about">Sobre a IGCode</a></li>
+        <li><a href="#process">Como trabalhamos</a></li>
+        <li><a href="#projects">Portfólio</a></li>
+        <li><a href="#cta">Solicitar orçamento</a></li>
+      </ul>
+    </div>
+
+
+    <div>
+      <div class="footer-col-title">Contato</div>
+
+      <ul class="footer-links">
+        <li>
+          <a href="https://wa.me/5514991402378">
+            WhatsApp
+          </a>
+        </li>
+
+
+
+        <li>
+          <a href="https://instagram.com/igcode">
+            Instagram
+          </a>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+
+  <div class="footer-bottom">
+
+    <span>
+      © 2026 IGCode. Todos os direitos reservados.
+    </span>
+
+
+    <div class="social-links">
+
+      <a class="social-link" href="https://instagram.com/igcode.dev" title="Instagram">
+        <i class="bi bi-instagram"></i>
+      </a>
+
+      <a class="social-link" href="https://wa.me/5514991402378" title="WhatsApp">
+        <i class="bi bi-whatsapp"></i>
+      </a>
+
+    </div>
+
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(el => observer.observe(el));
+
+  // Sticky nav bg
+  const nav = document.querySelector('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) {
+      nav.style.background = 'rgba(8,8,13,0.95)';
+    } else {
+      nav.style.background = 'rgba(8,8,13,0.7)';
+    }
+  });
+
+  // Smooth parallax on hero glow
+  document.addEventListener('mousemove', (e) => {
+    const x = e.clientX / window.innerWidth;
+    const y = e.clientY / window.innerHeight;
+    const glow = document.querySelector('.hero-bg-glow');
+    if (glow) {
+      glow.style.transform = `translate(${x * 20 - 10}px, ${y * 20 - 10}px)`;
+    }
+  });
+</script>
+</body>
+</html>
