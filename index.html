@@ -1140,7 +1140,7 @@
 
       <div class="project-thumb">
         <div class="project-thumb-inner">
-          <video autoplay muted loop playsinline preload="metadata">
+          <video class="project-video" autoplay muted loop playsinline preload="metadata">
             <source src="videos/lanchonete.mp4" type="video/mp4">
             Seu navegador não suporta vídeos.
           </video>
@@ -1164,7 +1164,7 @@
 
       <div class="project-thumb">
         <div class="project-thumb-inner">
-          <video autoplay muted loop playsinline preload="metadata">
+          <video class="project-video" autoplay muted loop playsinline preload="metadata">
             <source src="videos/ruaz.mp4" type="video/mp4">
             Seu navegador não suporta vídeos.
           </video>
@@ -1188,7 +1188,7 @@
 
       <div class="project-thumb">
         <div class="project-thumb-inner">
-          <video autoplay muted loop playsinline preload="metadata">
+          <video class="project-video" autoplay muted loop playsinline preload="metadata">
             <source src="videos/gcsports.mp4" type="video/mp4">
             Seu navegador não suporta vídeos.
           </video>
@@ -1410,6 +1410,36 @@
     if (glow) {
       glow.style.transform = `translate(${x * 20 - 10}px, ${y * 20 - 10}px)`;
     }
+  });
+
+  // Play portfolio videos only when they are visible on screen
+  const projectVideos = document.querySelectorAll('.project-video');
+
+  const playVideoIfVisible = (video) => {
+    const rect = video.getBoundingClientRect();
+    const isVisible = rect.top < window.innerHeight * 0.95 && rect.bottom > 0;
+
+    if (isVisible) {
+      video.play().catch(() => {});
+    } else {
+      video.pause();
+    }
+  };
+
+  const videoObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      const video = entry.target;
+      if (entry.isIntersecting) {
+        playVideoIfVisible(video);
+      } else {
+        video.pause();
+      }
+    });
+  }, { threshold: 0.25 });
+
+  projectVideos.forEach((video) => {
+    videoObserver.observe(video);
+    video.addEventListener('loadeddata', () => playVideoIfVisible(video), { once: true });
   });
 </script>
 </body>
